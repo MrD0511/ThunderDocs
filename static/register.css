@@ -9,20 +9,26 @@
     justify-content: center;
     align-items: center;
     background-color: black;
-}
+    background-image: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0zMDktYWV3LTAxM18xXzEuanBn.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+
 .boxDiv{
-    height: 300px;
-    width: 400px;
-    border: 2px solid black;
+    height: 500px;
+    width: 500px;
+    border: 2px solid #9200ED;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: black;
 }
 .title{
     margin-top: 20px;
     text-align: center;
+    color:#9200ED ;
 }
 .field{
     display: flex;
@@ -39,14 +45,49 @@
     gap: 10px;
 }
 .fieldLabel{
-    font-size: 12px;
+    font-size: 14px;
     color: rgb(255, 255, 255);
     margin-bottom: 5px;
 }
 .fieldInput{
     width: 100%;
     background-color: transparent;
-    height: 15px;
+    outline: none;
+    border:2px solid rgb(31, 31, 31);
+    color: white;
+    border-radius: 5px;
+    height: 25px;
     padding-left: 5px;
     font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.fieldInput:focus{
+    transform: scale(1.05);
+    border-color: rgb(146,0,237);
+}
+
+.btn{
+height: 30px;
+width: 90%;
+}
+
+.btn button{
+    height: 30px;
+    width: 80%;
+    position: relative;
+    left: 10%;
+    border: 2px solid rgba(146, 0, 237, 0.187);
+    background-color: black;
+    background-color: rgb(146, 0, 237);
+    color: white;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn button:hover{
+    color: black;
+    transform: scale(1.05);
 }

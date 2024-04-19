@@ -12,6 +12,10 @@ body{
     left: 0;
 }
 .logo{
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      
     margin-left: 15px;
     padding:5px;
     a{
