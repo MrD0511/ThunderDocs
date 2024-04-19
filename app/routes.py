@@ -29,6 +29,9 @@ def login():
         user=User.query.filter_by(email=email).first()
         if user is not None and user.verify_password(password):
             login_user(user)
+            print("logged in")
+
+             
             return redirect(url_for('index'))
     return render_template("login.html")
 
