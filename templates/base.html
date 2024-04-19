@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThunderDocs</title>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='base.css') }}>
+    {% block head %}
+        
+    {% endblock head %}
+</head>
+<body>
+    <div class="navBar">
+        <div class="logo">
+            <a><span id="front">Thunder </span><span id="end">Docs</a>
+        </div>
+        <div class="navLinks">
+            <a>Home</a>
+            <a>Documents</a>
+            <a>AboutUs</a>
+        </div>
+    </div>
+    <div class="mainDiv">
+        {% block body %}
+        
+        {% endblock %}
+    </div>
+
+</body>
+</html>

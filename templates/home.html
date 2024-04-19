@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock head %}
+{% block body %}
+    {% if current_user.is_authenticated %}
+        hello, {{current_user.name}}
+    {% else %}
+        hello, Stranger
+    {% endif %}
+    <div>
+        <form action="" method="post" enctype="multipart/form-data">
+            <input type="file" >
+            <button type="submit" >Upload</button>
+        </form>
+    </div>
+    <script>
+        <!-- This code snippet demonstrates how to upload a file using the Fetch API. -->
+        const inputElement = document.querySelector('input[type="file"]');
+
+        const uploadButton = document.querySelector('button[type="submit"]');
+        uploadButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            const file = inputElement.files[0];
+            if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            fetch('http://127.0.0.1:5000/upload', {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                console.log(response);
+            });
+            }
+        });
+    </script>
+{% endblock body %}
