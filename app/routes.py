@@ -43,11 +43,16 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('login'))
+@app.route('/about',methods=['GET'])
+def about():
+    return render_template('about.html')
 
 @app.route('/')
 @app.route('/home')
 @login_required
 def index():
+    if current_user.is_authenticated==False:
+        return redirect(url_for('login'))
     files=Files.query.filter_by(user_id=current_user.id).all()
     if files:
         return render_template('home.html',files=files)
@@ -57,10 +62,12 @@ def index():
 def upload():
     if request.method=='POST':
         file=request.files['file']
-        file_type=file.content_type
+        file_type=request.form['fileType']
+        file_type=file_type
         user_id=current_user.id
+        fileNameDb=str(uuid.uuid1())+file.filename
         bucket = storage.bucket()
-        blob = bucket.blob(str(uuid.uuid1())+file.filename)
+        blob = bucket.blob(fileNameDb)
         blob.upload_from_string(
             file.read(),
             content_type=file.content_type
@@ -68,7 +75,7 @@ def upload():
         url = blob.public_url
         file=Files(
             file_name=file.filename,
-            file_nameDb=file.filename,
+            file_nameDb=fileNameDb,
             file_path = url,
             user_id=user_id,
             file_type=file_type
@@ -84,6 +91,5 @@ def downloadFile(fileId):
         bucket = storage.bucket()
         blob = bucket.blob(file.file_name)
         return send_file(file.file_path,as_attachment=True)
-    
     return jsonify({"message":"File not found"})
     
