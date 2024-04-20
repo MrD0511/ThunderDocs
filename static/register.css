@@ -1,3 +1,5 @@
+
+
 .mainDiv{
     position: absolute;
     height: calc(100vh - 50px);
@@ -9,10 +11,11 @@
     justify-content: center;
     align-items: center;
     background-color: black;
-    background-image: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0zMDktYWV3LTAxM18xXzEuanBn.jpg');
+    background-image: url('https://i.ytimg.com/vi/0UC3A8QDpAs/maxresdefault.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
+    scrollbar-color:  #b303ec;
     }
+    
 
 .boxDiv{
     height: 500px;
