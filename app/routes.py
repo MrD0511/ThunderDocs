@@ -1,6 +1,10 @@
 from app import app,db,User,login_user,logout_user,current_user,Files
 from flask import render_template,redirect,request,url_for,jsonify
 import uuid as uuid
+from firebase_admin import credentials, initialize_app, storage
+cred = credentials.Certificate("C:/Users/DELL/Documents/ThunderDocs/important/thunderdocs-52311-d7e8d2d32861.json")
+initialize_app(cred, {'storageBucket': 'thunderdocs-52311.appspot.com'})
+from base64 import b64encode
 
 @app.route('/register',methods=['GET','POST'])
 def register():
@@ -47,14 +51,18 @@ def index():
 def upload():
     if request.method=='POST':
         file=request.files['file']
-        file_name=str(uuid.uuid1())+file.filename
-        file_path=f'files/{file_name}'
         file_type=file.content_type
         user_id=current_user.id
-        file.save(file_path)
+        bucket = storage.bucket()
+        blob = bucket.blob(str(uuid.uuid1())+file.filename)
+        blob.upload_from_string(
+            file.read(),
+            content_type=file.content_type
+        )
+        url = blob.public_url
         file=Files(
-            file_name=file_name,
-            file_path=file_path,
+            file_name=str(uuid.uuid1())+file.filename,
+            file_path = url,
             user_id=user_id,
             file_type=file_type
         )
