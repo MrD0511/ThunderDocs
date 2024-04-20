@@ -38,23 +38,30 @@
     <div class="fileSegment">
         {% if files %}
             {% for file in files  %}
-                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 fileBox ">
+                <div class="fileBox ">
                     {% if file.file_type=="aplication/pdf" %}
+                    <div class="filePrev">
                         <a href="#">
                             <img src="../static/images/pdf-file.png" alt="" />
                         </a>
+                    </div>
                     {% elif file.file_type=="image/jpeg" %}
+                    <div class="filePrev">
                         <a href="#">
                             <img src="../static/images/insert-picture-icon.png" alt="" />
                         </a>
+                    </div>
+                    
                     {% else %}
+                    <div class="filePrev">
                         <a href="#">
                             <img src="../static/images/pdf-file.png" alt="" />
                         </a>
+                    </div>
                     {% endif %}
 
-                    <div class="p-5 fileName" >
-                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <div class="fileName" >
+                        <a href="#">
                             {{file.file_name}}
                         </a>
                     </div>

@@ -1,6 +1,7 @@
 .fileSegment{
     display:flex;
     flex-wrap: wrap;
+    padding: 10px;
 }
 .fileBox{
     height: 150px;
@@ -10,24 +11,36 @@
     margin-right: 20px;
     display: grid;
     grid-template-rows: 115px 35px;
+    background-color: white;
+}
+.filePrev{
+    grid-row: 1/2;
 
+    border-radius: 5px;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(206, 145, 255, 0.18);
+}
+.filePrev a img{
+    height: 30px;
+    width: 30px;
 }
 .fileName{
-    grid-row: 2/3;
-    position: inherit;
-    bottom: 2px;
-    height: 35px;
+    grid-row: 2/2;
     width: 250px;
     display: flex;
     justify-items: center;
     align-items: center;
-    padding-left: 5px ;
-    
+    background-color: rgb(136, 1, 255);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .fileName a{
-    color: white;
+    text-align: center;
+    color: rgb(255, 255, 255);
     text-overflow: ellipsis ;
-    
 }
 .uploadBtn{
     position: fixed;
@@ -65,6 +78,7 @@
     padding: 20px;
     border: 1px solid rgb(136,0,255);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 .formBox form{
     width: 100%;

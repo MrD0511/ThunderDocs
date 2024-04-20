@@ -4,7 +4,7 @@ import uuid as uuid
 from firebase_admin import credentials, initialize_app, storage
 
 
-cred = credentials.Certificate("C:/Users/vishw/ThunderDocs/important/thunderdocs-52311-d7e8d2d32861.json")
+cred = credentials.Certificate("C:/Users/DELL/Documents/ThunderDocs/important/thunderdocs-52311-d7e8d2d32861.json")
 
 initialize_app(cred, {'storageBucket': 'thunderdocs-52311.appspot.com'})
 
@@ -52,7 +52,7 @@ def about():
 @app.route('/home')
 @login_required
 def index():
-    if not current_user.is_authenticated==False:
+    if current_user.is_authenticated==False:
         return redirect(url_for('login'))
     files=Files.query.filter_by(user_id=current_user.id).all()
     if files:
