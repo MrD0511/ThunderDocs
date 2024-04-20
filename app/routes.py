@@ -1,10 +1,10 @@
 from app import app,db,User,login_user,logout_user,current_user,Files
-from flask import render_template,redirect,request,url_for,jsonify
+from flask import render_template,redirect,request,url_for,jsonify,send_file
 import uuid as uuid
 from firebase_admin import credentials, initialize_app, storage
+
 cred = credentials.Certificate("C:/Users/DELL/Documents/ThunderDocs/important/thunderdocs-52311-d7e8d2d32861.json")
 initialize_app(cred, {'storageBucket': 'thunderdocs-52311.appspot.com'})
-from base64 import b64encode
 
 @app.route('/register',methods=['GET','POST'])
 def register():
@@ -45,6 +45,9 @@ def logout():
 @app.route('/')
 @app.route('/home')
 def index():
+    files=Files.query.filter_by(user_id=current_user.id).all()
+    if files:
+        return render_template('home.html',files=files)
     return render_template('home.html')
 
 @app.route('/upload',methods=['POST'])
@@ -61,7 +64,8 @@ def upload():
         )
         url = blob.public_url
         file=Files(
-            file_name=str(uuid.uuid1())+file.filename,
+            file_name=file.filename
+            file_nameDb=file.filename,
             file_path = url,
             user_id=user_id,
             file_type=file_type
@@ -69,3 +73,14 @@ def upload():
         db.session.add(file)
         db.session.commit()
         return jsonify({"message":"File uploaded successfully"})
+@app.route('/file/download/raw/<filename>')
+def downloadFile(fileId):
+    file=Files.query.filter_by(id=fileId).first()
+    if file:
+            
+            bucket = storage.bucket()
+            blob = bucket.blob(file_name)
+        return send_file(file.file_path,as_attachment=True)
+    
+    return jsonify({"message":"File not found"})
+    

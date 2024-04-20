@@ -1,0 +1,31 @@
+.fileSegment{
+    display:flex;
+    flex-wrap: wrap;
+}
+.fileBox{
+    height: 150px;
+    width: 250px;
+    border: 2px solid rgb(136,0, 255);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    display: grid;
+    grid-template-rows: 115px 35px;
+}
+.fileName{
+    grid-row: 2/3;
+    position: inherit;
+    bottom: 2px;
+    height: 35px;
+    width: 250px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding-left: 5px ;
+    
+}
+.fileName a{
+    color: white;
+    text-overflow: ellipsis ;
+    
+}
