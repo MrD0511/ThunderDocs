@@ -2,8 +2,12 @@ from app import app,db,User,login_user,logout_user,current_user,Files
 from flask import render_template,redirect,request,url_for,jsonify,send_file
 import uuid as uuid
 from firebase_admin import credentials, initialize_app, storage
+<<<<<<< HEAD
 
 cred = credentials.Certificate("C:/Users/DELL/Documents/ThunderDocs/important/thunderdocs-52311-d7e8d2d32861.json")
+=======
+cred = credentials.Certificate("C:/Users/vishw/ThunderDocs/important/thunderdocs-52311-d7e8d2d32861.json")
+>>>>>>> 20511cb01e6da8ef1c74e7ae74da1a5693cb1db4
 initialize_app(cred, {'storageBucket': 'thunderdocs-52311.appspot.com'})
 
 @app.route('/register',methods=['GET','POST'])
