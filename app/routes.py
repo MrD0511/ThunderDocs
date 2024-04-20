@@ -52,7 +52,7 @@ def about():
 @app.route('/home')
 @login_required
 def index():
-    if current_user.is_authenticated==False:
+    if not current_user.is_authenticated==False:
         return redirect(url_for('login'))
     files=Files.query.filter_by(user_id=current_user.id).all()
     if files:

@@ -54,7 +54,11 @@ h1{
 }
 .fieldLabel{
     font-size: 12px;
+<<<<<<< HEAD
+    color: rgb(0, 0, 0);
+=======
     color: black;
+>>>>>>> 4f79a73a96b15b94e5514ba98c73c2ad18d509a8
     margin-bottom: 5px;
 }
 .fieldInput{
@@ -62,7 +66,7 @@ h1{
     background-color: transparent;
     outline: none;
     border:1.5px solid rgb(31, 31, 31);
-    color: white;
+    color: rgb(0, 0, 0);
     border-radius: 5px;
     height: 30px;
     padding-left: 5px;
