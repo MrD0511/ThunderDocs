@@ -19,6 +19,7 @@
 
         const uploadButton = document.querySelector('button[type="submit"]');
         uploadButton.addEventListener('click', (event) => {
+            console.log("Clicked")
             event.preventDefault();
             const file = inputElement.files[0];
             if (file) {
