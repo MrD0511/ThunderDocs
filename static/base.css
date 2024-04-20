@@ -55,6 +55,14 @@ body{
     font-size: 16px;
 }
 .mainDiv{
+<<<<<<< HEAD
+=======
+    position: relative;
+    top: 90px;
+    left: 0;
+    background-image: url(bg.jpg);
+    background-size: cover; 
+>>>>>>> 86677c8aff70f45d5e759b2549f99f10d20f6826
 }
 @media screen and (max-width: 600px){
     .navLinks{
