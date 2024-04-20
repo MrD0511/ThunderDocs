@@ -2,7 +2,7 @@ from app import app,db,User,login_user,logout_user,current_user,Files
 from flask import render_template,redirect,request,url_for,jsonify
 import uuid as uuid
 from firebase_admin import credentials, initialize_app, storage
-cred = credentials.Certificate("C:/Users/DELL/Documents/ThunderDocs/important/thunderdocs-52311-d7e8d2d32861.json")
+cred = credentials.Certificate("C:/Users/vishw/ThunderDocs/important/thunderdocs-52311-d7e8d2d32861.json")
 initialize_app(cred, {'storageBucket': 'thunderdocs-52311.appspot.com'})
 from base64 import b64encode
 
