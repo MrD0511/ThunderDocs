@@ -7,9 +7,6 @@ body{
     width: 100vw;
     display: flex;
     align-items: center;
-    position: fixed;
-    top:0;
-    left: 0;
 }
 .logo{
      font-family: "Bebas Neue", sans-serif;
