@@ -15,12 +15,12 @@
     <div class="fileSegment">
         {% if files %}
             {% for file in files  %}
-                <div class="fileBox">
-                    <div class="preview">
-                        <img [src]={{file.file_path}} alt="file" class="fileIcon">
-                    </div>
-                    <div class="fileName">
-                        <a>
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 fileBox ">
+                    <a href="#">
+                        <img class="rounded-t-lg" src={{file.file_nameDb}} alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             {{file.file_name}}
                         </a>
                     </div>
