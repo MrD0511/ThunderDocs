@@ -26,11 +26,11 @@ class User(UserMixin,db.Model):
 
 class Files(db.Model):
     id=db.Column(db.Integer,primary_key=True)
+    file_nameDb=db.Column(db.String,nullable=False)
     file_name=db.Column(db.String,nullable=False,unique=True)
     file_path=db.Column(db.String,nullable=False)
     user_id=db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
     file_type=db.Column(db.String,nullable=False)
-
 
 @login_manager.user_loader
 def load_user(id):

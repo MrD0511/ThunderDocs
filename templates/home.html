@@ -5,21 +5,44 @@
 {% endblock head %}
 {% block body %}
     <div>
-        <form action="" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" id="file" style="display: none;">
-            <label for="file">
-                <button type="submit" onclick="">Upload</button>
+        <form action="" enctype="multipart/form-data" id="fileForm">
+            <input type="file" name="file" id="file" accept=".pdf,.jpeg,jpg,.png," style="display: none;">
+            <label for="file" onclick=" event.preventDefault(); document.getElementById('file').click();">
+                <div class="uploadBtn">
+                    <a onclick="">+</a>
+                </div>
             </label>
+            <div class="max-w-sm mx-auto formBox" id="formBox">
+                <div>
+                    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a Document</label>
+                    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Choose a Document</option>
+                        <option value="adhar">Adhar Card</option>
+                        <option value="licence">Driving Licence</option>
+                        <option value="passport">Passport</option>
+                        <option value="sign">Signature</option>
+                        <option value="photo">Photograph</option>
+                        <option value="id">ID Card</option>
+                        <option value="more">Other</option>
+                    </select>
+                    </form>
+                    <div class="formbtns" style="display:flex;">
+                        <button type="button back" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 backFormBtn">Back</button>
+                        <button type="button Upload" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 upload" id="upload">Upload</button>
+                    </div>
+                </div>
+        </div>
         </form>
     </div>
+
     <div class="fileSegment">
         {% if files %}
             {% for file in files  %}
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 fileBox ">
                     <a href="#">
-                        <img class="rounded-t-lg" src={{file.file_nameDb}} alt="" />
+                        <img src="{{file.file_path}}" alt="" />
                     </a>
-                    <div class="p-5">
+                    <div class="p-5 fileName" >
                         <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             {{file.file_name}}
                         </a>
@@ -29,13 +52,19 @@
         {% endif %}
     </div>
     <script>
-        const inputElement = document.querySelector('input[type="file"]');
+        
+        const fileInput = document.getElementById('file');
+        const formBox = document.getElementById('formBox');
+        const fileSizeInput = document.getElementById('fileType');
+        const fileForm = document.getElementById('fileForm');
 
-        const uploadButton = document.querySelector('button[type="submit"]');
+        const inputElement = document.querySelector('input[type="file"]');
+        const uploadButton = document.getElementById('upload');
         uploadButton.addEventListener('click', (event) => {
             console.log("Clicked")
+            console.log("this");
             event.preventDefault();
-            const file = inputElement.files[0];
+            const file = fileInput.files[0];
             if (file) {
             const formData = new FormData();
             formData.append('file', file);
@@ -44,8 +73,15 @@
                 body: formData
             }).then(response => {
                 console.log(response);
+                formBox.style.display = 'none';
             });
             }
+        });
+
+        fileInput.addEventListener('change', function() {
+            console.log("Changed")
+            event.preventDefault();
+                formBox.style.display = 'block';
         });
     </script>
 

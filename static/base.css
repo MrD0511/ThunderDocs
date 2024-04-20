@@ -3,7 +3,7 @@ body{
     font-family: "Poppins", sans-serif;
 }
 .navBar{
-    height: 90px;
+    height: 70px;
     width: 100vw;
     display: flex;
     align-items: center;
