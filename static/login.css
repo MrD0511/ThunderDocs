@@ -1,3 +1,7 @@
+h1{
+    font-size: 30px;
+}
+
 .mainDiv{
     position: absolute;
     left: 0;
@@ -50,7 +54,7 @@
 }
 .fieldLabel{
     font-size: 12px;
-    color: white;
+    color: black;
     margin-bottom: 5px;
 }
 .fieldInput{
