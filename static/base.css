@@ -58,6 +58,8 @@ body{
     position: relative;
     top: 90px;
     left: 0;
+    background-image: url(bg.jpg);
+    background-size: cover; 
 }
 @media screen and (max-width: 600px){
     .navLinks{
