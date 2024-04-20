@@ -45,7 +45,7 @@ def logout():
     return redirect(url_for('login'))
 @app.route('/about',methods=['GET'])
 def about():
-    return render_template('about.html')
+    return render_template('about_us.html')
 
 @app.route('/')
 @app.route('/home')
