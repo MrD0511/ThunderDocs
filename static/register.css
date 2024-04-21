@@ -4,10 +4,10 @@ h1{
 
 .mainDiv{
     position: absolute;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 70px);
     width: 100vw;
     left:0;
-    top: 100px;
+    top: 70px;
     display: flex;
     flex-direction:column;
     justify-content: center;
