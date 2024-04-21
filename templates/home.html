@@ -46,7 +46,7 @@
                             <img src="../static/images/pdf-file.png" alt="" />
                         </a>
                     </div>
-                    {% elif file.file_type=="image/jpeg" %}
+                    {% elif file.file_type=="image/jpeg" or file.file_type=="image/png" %}
                     <div class="filePrev">
                         
                         <a href="{{url_for('preview',file_id=file.id)}}">

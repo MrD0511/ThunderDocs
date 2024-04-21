@@ -2,9 +2,9 @@ from app import app,db,User,login_user,logout_user,current_user,Files,login_requ
 from flask import render_template,redirect,request,url_for,jsonify,send_file
 import uuid as uuid
 from firebase_admin import credentials, initialize_app, storage
-
-
-cred = credentials.Certificate("C:/ThunderDocs/important/thunderdocs-52311-d7e8d2d32861.json")
+from imageSizeReducer import ImageSizeReducer
+imgageReducer=ImageSizeReducer()
+cred = credentials.Certificate("C:/Users/DELL/Documents/ThunderDocs/important/thunderdocs-52311-d7e8d2d32861.json")
 
 initialize_app(cred, {'storageBucket': 'thunderdocs-52311.appspot.com'})
 
@@ -81,7 +81,12 @@ def upload():
 @app.route('/download/<id>')
 def downloadFile(id):
     file=Files.query.filter_by(id=id).first()
+    size=request.form('size')
     if file:
+        if size:
+            file_path_temp="C:/Users/DELL/Documents/ThunderDocs/static/tempFiles/"+str(uuid.uuid1())+file.file_name
+            imgageReducer.compress_image(file.file_path,file_path_temp,int(size))
+            return send_file(file_path_temp,as_attachment=True)
         return send_file(file.file_path,as_attachment=True)
     return jsonify({"message":"File not found"})
 

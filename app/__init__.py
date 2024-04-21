@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin,login_required,login_user,LoginManager,login_manager,current_user,logout_user
-
+from imageSizeReducer import compress_image
 app = Flask(__name__,template_folder="../templates",static_folder='../static')
 app.config['SECRET_KEY']='Thisisasecretkey'
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///test.db'
