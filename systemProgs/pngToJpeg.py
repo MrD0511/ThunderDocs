@@ -1,7 +1,7 @@
 
 #importing the required package 
 from PIL import Image 
-  
+
 #open image in png format 
 img_png = Image.open("C:/Users/DELL/Downloads/free.png") 
 if img_png.mode == 'RGBA':

@@ -26,7 +26,6 @@ class User(UserMixin,db.Model):
 
 class Files(db.Model):
     id=db.Column(db.Integer,primary_key=True)
-    file_nameDb=db.Column(db.String,nullable=False,unique=True)
     file_name=db.Column(db.String,nullable=False)
     file_path=db.Column(db.String,nullable=False)
     user_id=db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
