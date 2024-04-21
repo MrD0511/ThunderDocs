@@ -56,11 +56,21 @@ body{
     font-size: 16px;
 }
 .mainDiv{
+<<<<<<< HEAD
     position: absolute
     top: 70px;
     left: 0;
     background-size: cover; 
     padding: 20px;
+=======
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background-size: cover;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;    
+>>>>>>> 43be86f72708adc799f57f7c97df94b18cac8a08
 }
 @media screen and (max-width: 600px){
     .navLinks{
@@ -75,4 +85,8 @@ body{
     #end{
         font-size: 40px;
     }
+}
+
+#about,#login,#logout{
+    color: rgb(0, 98, 255);
 }

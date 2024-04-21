@@ -4,7 +4,7 @@ import uuid as uuid
 from firebase_admin import credentials, initialize_app, storage
 
 
-cred = credentials.Certificate("C:/Users/DELL/Documents/ThunderDocs/important/thunderdocs-52311-d7e8d2d32861.json")
+cred = credentials.Certificate("C:/ThunderDocs/important/thunderdocs-52311-d7e8d2d32861.json")
 
 initialize_app(cred, {'storageBucket': 'thunderdocs-52311.appspot.com'})
 
