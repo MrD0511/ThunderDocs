@@ -64,20 +64,13 @@ def upload():
     if request.method=='POST':
         file=request.files['file']
         file_type=request.form['fileType']
-        file_type=file_type
+        file_name=str(uuid.uuid1())+file.filename
         user_id=current_user.id
-        fileNameDb=str(uuid.uuid1())+file.filename
-        bucket = storage.bucket()
-        blob = bucket.blob(fileNameDb)
-        blob.upload_from_string(
-            file.read(),
-            content_type=file.content_type
-        )
-        url = blob.public_url
+        file_path="C:/Users/DELL/Documents/ThunderDocs/static/files/"+file_name
+        file.save(file_path)
         file=Files(
-            file_name=file.filename,
-            file_nameDb=fileNameDb,
-            file_path = url,
+            file_name=file_name,
+            file_path = file_path,
             user_id=user_id,
             file_type=file_type
         )
@@ -85,12 +78,10 @@ def upload():
         db.session.commit()
         return jsonify({"message":"File uploaded successfully"})
 
-@app.route('/file/download/raw/<filename>')
-def downloadFile(fileId):
-    file=Files.query.filter_by(id=fileId).first()
+@app.route('/download/<id>')
+def downloadFile(id):
+    file=Files.query.filter_by(id=id).first()
     if file:
-        bucket = storage.bucket()
-        blob = bucket.blob(file.file_name)
         return send_file(file.file_path,as_attachment=True)
     return jsonify({"message":"File not found"})
 
@@ -99,9 +90,5 @@ def downloadFile(fileId):
 def preview(file_id):
     file=Files.query.filter_by(id=file_id).first()
     if file:
-        bucket = storage.bucket()
-        blob = bucket.blob(file.file_nameDb)
-        image_urls = f"https://firebasestorage.googleapis.com/v0/b/{bucket.name}/o/{blob.name}?alt=media"
-        print(image_urls)
-        return render_template('preview.html',file_name=file.file_name,file_path=image_urls,file_type=file.file_type)
+        return render_template('preview.html',id=file.id,file_name=file.file_name,file_path=file.file_path,file_type=file.file_type)
     return jsonify({"message":"File not found"})
