@@ -93,4 +93,15 @@ def downloadFile(fileId):
         blob = bucket.blob(file.file_name)
         return send_file(file.file_path,as_attachment=True)
     return jsonify({"message":"File not found"})
-    
+
+@app.route('/file/preview/<file_id>')
+@login_required
+def preview(file_id):
+    file=Files.query.filter_by(id=file_id).first()
+    if file:
+        bucket = storage.bucket()
+        blob = bucket.blob(file.file_nameDb)
+        image_urls = f"https://firebasestorage.googleapis.com/v0/b/{bucket.name}/o/{blob.name}?alt=media"
+        print(image_urls)
+        return render_template('preview.html',file_name=file.file_name,file_path=image_urls,file_type=file.file_type)
+    return jsonify({"message":"File not found"})

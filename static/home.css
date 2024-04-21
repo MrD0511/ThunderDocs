@@ -33,7 +33,7 @@
     display: flex;
     justify-items: center;
     align-items: center;
-    background-color: rgb(136, 1, 255);
+    background-color: #8800ff;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }

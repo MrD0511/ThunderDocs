@@ -41,20 +41,21 @@
                 <div class="fileBox ">
                     {% if file.file_type=="aplication/pdf" %}
                     <div class="filePrev">
-                        <a href="#">
+                        <a href="{{url_for('preview',file_id=file.id)}}">
                             <img src="../static/images/pdf-file.png" alt="" />
                         </a>
                     </div>
                     {% elif file.file_type=="image/jpeg" %}
                     <div class="filePrev">
-                        <a href="#">
+                        
+                        <a href="{{url_for('preview',file_id=file.id)}}">
                             <img src="../static/images/insert-picture-icon.png" alt="" />
                         </a>
                     </div>
                     
                     {% else %}
                     <div class="filePrev">
-                        <a href="#">
+                        <a href="{{url_for('preview',file_id=file.id)}}">
                             <img src="../static/images/pdf-file.png" alt="" />
                         </a>
                     </div>
