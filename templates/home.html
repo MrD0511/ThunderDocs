@@ -4,7 +4,8 @@
     <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='home.css') }}>
 {% endblock head %}
 {% block body %}
-    <div>
+    <div style="padding-left: 20px; padding-right: 20px;" >
+        <h1 class="title">Your Docs</h1>
         <form action="" enctype="multipart/form-data" id="fileForm">
             <input type="file" name="file" id="file" accept=".pdf,.jpeg,jpg,.png," style="display: none;">
             <label for="file" onclick=" event.preventDefault(); document.getElementById('file').click();">

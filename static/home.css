@@ -3,6 +3,11 @@
     flex-wrap: wrap;
     padding: 10px;
 }
+.title{
+    font-size: 30px;
+    color: white;
+    font-weight: 700;
+}
 .fileBox{
     height: 150px;
     width: 250px;
@@ -12,6 +17,10 @@
     display: grid;
     grid-template-rows: 115px 35px;
     background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+.fileBox:hover{
+    transform: scale(1.05);
 }
 .filePrev{
     grid-row: 1/2;
@@ -36,11 +45,15 @@
     background-color: #8800ff;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
 }
 .fileName a{
     text-align: center;
     color: rgb(255, 255, 255);
     text-overflow: ellipsis ;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .uploadBtn{
     position: fixed;
